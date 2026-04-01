@@ -41,7 +41,17 @@ export default function PetForm({ initial = {}, onSave, onDelete, onCancel, isNe
         </div>
       </div>
 
-      <div className="form-page">
+      <div className="form-page form-page-split">
+        <div className="form-pet-image-col">
+          <img
+            src={form.picture || '/placeholder.svg'}
+            alt={form.name || 'Pet'}
+            className="form-pet-image"
+            onError={(e) => { e.target.src = '/placeholder.svg'; }}
+          />
+        </div>
+
+        <div className="form-fields-col">
         {!isNew && (
           <div className="form-actions" style={{ marginTop: 16 }}>
             <button className="btn btn-danger" onClick={onDelete}>Delete</button>
@@ -92,6 +102,7 @@ export default function PetForm({ initial = {}, onSave, onDelete, onCancel, isNe
             <label htmlFor="avail" style={{ marginBottom: 0 }}>Yes, this pet is available</label>
           </div>
         </div>
+        </div>{/* form-fields-col */}
       </div>
     </div>
   );

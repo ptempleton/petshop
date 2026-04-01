@@ -170,6 +170,34 @@ body {
   padding: 0 16px;
 }
 
+.form-page-split {
+  max-width: 960px;
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.form-pet-image-col {
+  flex-shrink: 0;
+  width: 220px;
+  padding-top: 16px;
+}
+
+.form-pet-image {
+  width: 220px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #b8d4f0;
+  background: #edf4fb;
+  display: block;
+}
+
+.form-fields-col {
+  flex: 1;
+  min-width: 0;
+}
+
 .form-group {
   margin-bottom: 14px;
 }
