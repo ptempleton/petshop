@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { api } from '../api';
+import { api, FALLBACK_IMG } from '../api';
 
 export default function Home() {
   const [pets, setPets] = useState([]);
@@ -70,11 +70,9 @@ export default function Home() {
               onClick={() => navigate(`/pets/${pet.id}/edit`)}
             >
               <img
-                src={pet.picture || 'https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074_1280.jpg'}
+                src={pet.picture || FALLBACK_IMG}
                 alt={pet.name}
-                onError={(e) => {
-                  e.target.src = 'https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074_1280.jpg';
-                }}
+                onError={(e) => { e.target.src = FALLBACK_IMG; }}
               />
               <div className="pet-card-body">
                 <div className="pet-card-name">{pet.name}</div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { api } from '../../api';
+import { api, FALLBACK_IMG } from '../../api';
 
 export default function AdminPurchases() {
   const [purchases, setPurchases] = useState([]);
@@ -35,11 +35,11 @@ export default function AdminPurchases() {
             {purchases.map((p) => (
               <tr key={p.id}>
                 <td>
-                  {p.pet_picture && (
+                  {(p.pet_picture || true) && (
                     <img
-                      src={p.pet_picture}
+                      src={p.pet_picture || FALLBACK_IMG}
                       alt={p.pet_name}
-                      onError={(e) => { e.target.style.display = 'none'; }}
+                      onError={(e) => { e.target.src = FALLBACK_IMG; }}
                     />
                   )}
                 </td>

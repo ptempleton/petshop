@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { api } from '../api';
+import { api, FALLBACK_IMG } from '../api';
 
 export default function PurchaseDetail() {
   const { id } = useParams();
@@ -34,11 +34,11 @@ export default function PurchaseDetail() {
       </div>
 
       <div className="purchase-detail">
-        {purchase.pet_picture && (
+        {(purchase.pet_picture || true) && (
           <img
-            src={purchase.pet_picture}
+            src={purchase.pet_picture || FALLBACK_IMG}
             alt={purchase.pet_name}
-            onError={(e) => { e.target.style.display = 'none'; }}
+            onError={(e) => { e.target.src = FALLBACK_IMG; }}
           />
         )}
         <div className="field">

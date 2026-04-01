@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { api } from '../api';
+import { api, FALLBACK_IMG } from '../api';
 
 export default function MakeSale() {
   const [pets, setPets] = useState([]);
@@ -63,9 +63,9 @@ export default function MakeSale() {
               onClick={() => { setSelected(pet); setError(''); }}
             >
               <img
-                src={pet.picture || ''}
+                src={pet.picture || FALLBACK_IMG}
                 alt={pet.name}
-                onError={(e) => { e.target.style.display = 'none'; }}
+                onError={(e) => { e.target.src = FALLBACK_IMG; }}
               />
               <div className="sale-pet-info">
                 <div className="name">{pet.name} the {pet.pet_type}</div>
@@ -79,11 +79,11 @@ export default function MakeSale() {
         <div className="sale-detail">
           {selected ? (
             <>
-              {selected.picture && (
+              {(selected.picture || true) && (
                 <img
-                  src={selected.picture}
+                  src={selected.picture || FALLBACK_IMG}
                   alt={selected.name}
-                  onError={(e) => { e.target.style.display = 'none'; }}
+                  onError={(e) => { e.target.src = FALLBACK_IMG; }}
                 />
               )}
               <div>

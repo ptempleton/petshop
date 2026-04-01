@@ -1,5 +1,7 @@
 const BASE = '/api';
 
+export const FALLBACK_IMG = 'https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074_1280.jpg';
+
 async function request(path, options = {}) {
   const res = await fetch(`${BASE}${path}`, {
     headers: { 'Content-Type': 'application/json' },
